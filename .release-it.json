@@ -9,7 +9,11 @@
     "commitMessage": "chore(release): ${version}"
   },
   "hooks": {
-    "before:init": ["git pull origin main --rebase", "pnpm run lint"],
+    "before:init": [
+      "git pull origin main --rebase",
+      "pnpm run lint",
+      "pnpm run test"
+    ],
     "after:bump": ["pnpm dlx auto-changelog -p"]
   }
 }
