@@ -12,39 +12,28 @@ interface TodoFormProps {
 
 export default function TodoForm({ onClose }: TodoFormProps) {
   const { toast } = useToast();
-  const { loadTodos } = useTodoStore();
+  const { loadTodos, addTodo } = useTodoStore();
   const [todoName, setTodoName] = useState<string>("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/todos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: todoName,
-          completed: false,
-          updatedAt: new Date(),
-        }),
+      const response = await addTodo({
+        title: todoName,
+        completed: false,
+        updatedAt: new Date(),
+        id: Math.random().toString(36).substr(2, 9),
       });
 
-      if (response.ok) {
-        const newTodo = await response.json();
+      if (response) {
         toast({
-          title: "Todo ajoutée",
-          description: `La todo "${newTodo.title}" a bien été ajoutée`,
+          title: "Todo ajoutée 🎉",
+          description: `La todo "${todoName.slice(0, 20)}" a bien été ajoutée`,
         });
         setTodoName("");
         onClose();
         loadTodos();
-      } else {
-        toast({
-          title: "Erreur",
-          description: "Une erreur est survenue lors de l'ajout de la todo",
-        });
       }
     } catch (error) {
       console.error("Erreur réseau", error);
@@ -56,7 +45,7 @@ export default function TodoForm({ onClose }: TodoFormProps) {
       <div className="grid gap-4 py-4">
         <div className="flex flex-col gap-4">
           <Label htmlFor="name" className="text-start">
-            Intitulé de la todo
+            Intitulé de la todo to{" "}
           </Label>
           <Input
             id="name"

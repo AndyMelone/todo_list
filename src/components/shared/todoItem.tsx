@@ -29,7 +29,7 @@ export const TodoItem = forwardRef<HTMLDivElement, TodoItemProps>(
                 completed ? "line-through" : ""
               }`}
             >
-              {title}
+              {title.slice(0, 50)}
             </label>
           </div>
           <button
