@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { DialogFooter } from "../ui/dialog";
 import useTodoStore from "@/store/todoStore";
+import { motion } from "framer-motion";
 
 interface TodoFormProps {
   onClose: () => void;
@@ -56,7 +57,9 @@ export default function TodoForm({ onClose }: TodoFormProps) {
         </div>
       </div>
       <DialogFooter>
-        <Button type="submit">Ajouter</Button>
+        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+          <Button type="submit">Ajouter</Button>
+        </motion.div>
       </DialogFooter>
     </form>
   );

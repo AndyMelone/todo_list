@@ -47,6 +47,7 @@ export default function TodoList() {
         title: "Succès",
         description: "Statut de la todo modifié avec succès",
       });
+      // clean scale
     } else {
       toast({
         title: "Erreur",
@@ -71,7 +72,6 @@ export default function TodoList() {
             whileHover={{
               scale: 1.05,
             }}
-            className=""
           >
             <Skeleton className="h-9  py-2 rounded-lg bg-[#8c8c8c] mx-5" />
           </motion.div>
@@ -95,6 +95,9 @@ export default function TodoList() {
       values={sortedTodos}
       onReorder={() => {}}
       className="space-y-3 min-w-10 max-h-[400px] overflow-y-auto py-4 pb-5 px-8"
+      initial={{ y: -100 }}
+      onDurationChange={(duration) => duration}
+      animate={{ x: 0, y: 0 }}
     >
       {sortedTodos.map((todo) => (
         <Reorder.Item key={todo.id} value={todo}>
