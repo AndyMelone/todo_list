@@ -9,12 +9,7 @@
     "commitMessage": "chore(release): ${version}"
   },
   "hooks": {
-    "before:init": [
-      "git pull origin main --rebase",
-      "pnpm run lint",
-      "pnpm run dev",
-      "pnpm run json-server"
-    ],
+    "before:init": ["git pull origin main --rebase", "pnpm run lint"],
     "after:bump": [
       "pnpm dlx auto-changelog --commit-limit false --template keepachangelog --unreleased --tag-prefix v"
     ]
