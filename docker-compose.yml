@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  prisma:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: >
+      sh -c "pnpm install && pnpm prisma migrate deploy && pnpm prisma db seed"
+    depends_on:
+      - db
+
+  json-server:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3001"
+    command: npx json-server --watch db.json --port 3001
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "mysql://myuser:mypassword@db:3306/mydatabase"
+      NEXT_PUBLIC_API_URL: "http://json-server:3001" 
+    depends_on:
+      - db
+      - json-server
+      - prisma
+
+volumes:
+  mysql_data:
