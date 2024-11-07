@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+  "github": {
+    "release": true
+  },
+  "git": {
+    "tagName": "v${version}",
+    "requireBranch": "main",
+    "commitMessage": "chore(release): ${version}"
+  },
+  "hooks": {
+    "before:init": [
+      "git pull origin main --rebase",
+      "pnpm run lint",
+      "pnpm run dev",
+      "pnpm run json-server"
+    ],
+    "after:bump": [
+      "pnpm dlx auto-changelog --commit-limit false --template keepachangelog --unreleased --tag-prefix v"
+    ]
+  }
+}
