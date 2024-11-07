@@ -64,31 +64,48 @@ export default function TodoList() {
 
   if (loading) {
     return (
-      <div className="space-y-3 min-w-10 max-h-[400px] overflow-x-auto w-full px-3 py-4">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <Skeleton key={index} className="h-10 rounded-lg bg-gray-300" />
+      <div className="space-y-3 min-w-10 max-h-[400px] overflow-y-auto px-3 py-4">
+        {Array.from({ length: 3 }).map((_, index) => (
+          <motion.div
+            key={index}
+            whileHover={{
+              scale: 1.05,
+            }}
+            className=""
+          >
+            <Skeleton className="h-9  py-2 rounded-lg bg-[#8c8c8c] mx-5" />
+          </motion.div>
         ))}
       </div>
     );
   }
 
   return sortedTodos.length === 0 ? (
-    <div className="flex items-center justify-center w-full h-full">
+    <motion.div
+      className="flex items-center justify-center w-full h-full"
+      initial={{ x: -100, y: -100 }}
+      animate={{ x: 0, y: 0 }}
+    >
       <h1 className="text-lg text-white">Aucune todo à afficher</h1>
-    </div>
+    </motion.div>
   ) : (
     <Reorder.Group
       as="div"
       axis="y"
       values={sortedTodos}
       onReorder={() => {}}
-      className="space-y-3 min-w-10 max-h-[400px] overflow-x-auto w-full px-3 py-4"
+      className="space-y-3 min-w-10 max-h-[400px] overflow-y-auto py-4 pb-5 px-8"
     >
       {sortedTodos.map((todo) => (
         <Reorder.Item key={todo.id} value={todo}>
           <MotionTodo
             key={todo.id}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.2 },
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             title={todo.title}
             completed={todo.completed}
             onDeleted={() => handleDelete(todo.id)}
