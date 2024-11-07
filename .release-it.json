@@ -10,8 +10,6 @@
   },
   "hooks": {
     "before:init": ["git pull origin main --rebase", "pnpm run lint"],
-    "after:bump": [
-      "pnpm dlx auto-changelog --commit-limit false --template keepachangelog --unreleased --tag-prefix v"
-    ]
+    "after:bump": ["pnpm dlx auto-changelog -p"]
   }
 }
