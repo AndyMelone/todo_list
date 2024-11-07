@@ -21,7 +21,7 @@ export default function Home() {
         <h1 className="sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
           Todos ({todos.length})
         </h1>
-        <motion.div whileHover={{ scale: 1.2 }}>
+        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
           <button
             className="hover:opacity-80"
             onClick={() => setIsDialogOpen(true)}
