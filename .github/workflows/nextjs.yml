@@ -40,8 +40,6 @@ jobs:
         run: pnpm install
       - name: unit test
         run: pnpm test
-      - name: start server
-        run: pnpm json-server
       - name: Build with Next.js
         run: pnpm run build
       - name: Upload artifact
