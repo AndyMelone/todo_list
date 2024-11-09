@@ -1,0 +1,14 @@
+#! /bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Mise à jour de votre branche avec 'main' avant de pousser..."
+
+git pull origin main --rebase
+
+# Vérifier si le rebase a réussi
+if [ $? -ne 0 ]; then
+  echo "Rebase échoué. Résolvez les conflits et réessayez."
+  exit 1
+fi
+
+echo "Votre branche est maintenant à jour avec 'main'. Prêt à pousser les commits."
