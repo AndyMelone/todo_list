@@ -1,52 +1,10 @@
 {
   "todos": [
     {
-      "id": "31a7",
-      "title": "1er",
+      "id": "c8nqybl7r",
+      "title": "bamba",
       "completed": false,
-      "updatedAt": "2024-11-06T23:31:26.890Z"
-    },
-    {
-      "id": "2e30",
-      "title": "merde",
-      "completed": false,
-      "updatedAt": "2024-11-06T23:32:41.551Z"
-    },
-    {
-      "id": "8ee2",
-      "title": "merde",
-      "completed": false,
-      "updatedAt": "2024-11-06T23:39:50.289Z"
-    },
-    {
-      "id": "56e4",
-      "title": "charles",
-      "completed": true,
-      "updatedAt": "2024-11-07T01:06:36.007Z"
-    },
-    {
-      "id": "cug838fk6",
-      "title": "re",
-      "completed": true,
-      "updatedAt": "2024-11-07T09:46:08.802Z"
-    },
-    {
-      "id": "89csnd427",
-      "title": "dramanoush",
-      "completed": true,
-      "updatedAt": "2024-11-07T13:11:19.045Z"
-    },
-    {
-      "id": "b5flo8lq6",
-      "title": "",
-      "completed": false,
-      "updatedAt": "2024-11-07T13:11:58.431Z"
-    },
-    {
-      "id": "1gd6g0e18",
-      "title": "",
-      "completed": false,
-      "updatedAt": "2024-11-07T13:12:59.296Z"
+      "updatedAt": "2024-11-09T00:10:46.781Z"
     }
   ]
 }

@@ -1,12 +1,10 @@
-FROM node:18 AS builder
+
+FROM node:20.12.1-alpine3.18
 RUN apk add --no-cache openssl1.1-compat
 WORKDIR /app
-RUN npm install -g pnpm
 COPY package.json pnpm-lock.yaml ./
+RUN npm install -g pnpm
 RUN pnpm install
 COPY . .
-RUN pnpm prisma generate
-RUN pnpm build
 EXPOSE 3000
-CMD ["pnpm", "start"]
-
+CMD pnpm dlx prisma db push && pnpm run dev
