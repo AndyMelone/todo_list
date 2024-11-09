@@ -1,0 +1,5 @@
+#! /bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Afficher un message dans la console après chaque commit
+echo "Le commit a été effectué avec succès !"
