@@ -31,7 +31,7 @@ export const TodoItem = forwardRef<HTMLDivElement, TodoItemProps>(
           onClick={onDeleted}
           className="mr-2 opacity-100 sm:opacity-0 group-hover:opacity-100 sm:group-hover:opacity-100 transition-opacity sm:transition-all"
         >
-          <IoTrashOutline className="w-4 h-4 text-red-600 hover:text-red-500 focus:text-red-700  " />
+          <IoTrashOutline className="w-4 h-4 text-red-500 hover:text-red-500 focus:text-red-700  " />
         </button>
       </motion.div>
     );
