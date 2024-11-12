@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "start": "next start",
     "build": "next build",
-    "json-server": "json-server --watch src/db/db.json --port 3001",
+    "json-server": "json-server --watch server/db.json --port 3001",
     "lint": "next lint",
     "prisma-migrate-init": "prisma migrate dev --name init",
     "test": "vitest",
