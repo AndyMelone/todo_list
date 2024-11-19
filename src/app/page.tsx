@@ -2,9 +2,10 @@
 import { IoMdAddCircle } from "react-icons/io";
 import { useState } from "react";
 import TodoDialog from "@/components/shared/todoDialogue";
-import TodoList from "@/components/shared/todoList";
+
 import { motion } from "framer-motion";
 import useTodoStore from "@/store/todoStore";
+import { TodoList } from "@/components/shared/todoList";
 
 export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
