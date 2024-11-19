@@ -44,5 +44,3 @@ Open a new terminal
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ![Screenshot](screenshot.png)
-
-if you have any questions, don't hesitate to leave me a message
