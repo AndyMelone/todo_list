@@ -22,9 +22,9 @@ jobs:
 
       - name: Install Docker
         run: |
-          sudo apt update
-          sudo apt install -y docker.io
-          sudo apt install -y docker-compose
+          apt update
+          apt install -y docker.io
+          apt install -y docker-compose
 
       # Étape 2 : Configurer Docker Compose
       - name: Set up Docker Compose
