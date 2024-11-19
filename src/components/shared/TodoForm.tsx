@@ -2,43 +2,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { DialogFooter } from "../ui/dialog";
-import useTodoStore from "@/store/todoStore";
 import { motion } from "framer-motion";
+import { useAddTodo } from "@/hooks/use-addTodo";
 
 interface TodoFormProps {
   onClose: () => void;
 }
 
 export default function TodoForm({ onClose }: TodoFormProps) {
-  const { toast } = useToast();
-  const { loadTodos, addTodo } = useTodoStore();
   const [todoName, setTodoName] = useState<string>("");
+  const { addTodoFunction } = useAddTodo();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (!todoName.trim()) return;
 
-    try {
-      const response = await addTodo({
-        title: todoName,
-        completed: false,
-        updatedAt: new Date(),
-        id: Math.random().toString(36).substr(2, 9),
-      });
-
-      if (response) {
-        toast({
-          title: "Todo ajoutée 🎉",
-          description: `La todo "${todoName.slice(0, 20)}" a bien été ajoutée`,
-        });
-        setTodoName("");
-        onClose();
-        loadTodos();
-      }
-    } catch (error) {
-      console.error("Erreur réseau", error);
-    }
+    await addTodoFunction(todoName);
+    setTodoName("");
+    onClose();
   };
 
   return (
@@ -46,7 +28,7 @@ export default function TodoForm({ onClose }: TodoFormProps) {
       <div className="grid gap-4 py-4">
         <div className="flex flex-col gap-4">
           <Label htmlFor="name" className="text-start">
-            Intitulé de la todo to{" "}
+            Intitulé de la todo
           </Label>
           <Input
             id="name"
