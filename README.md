@@ -15,7 +15,8 @@ navigated to Todo_list directory
 
     docker compose up -d
 
-if you don't want to use docker make sure you have [Node JS](https://nodejs.org/en) on your machines
+> [!NOTE]
+> if you don't want to use docker make sure you have [Node JS](https://nodejs.org/en) on your machines
 
 Instal pnpm or using npm
 
@@ -29,7 +30,8 @@ or
 
     pnpm install
 
-For the rest of the suite, I use pnpm. You can use any dependency manager you like, depending on what you have on your machine.
+> [!NOTE]
+> For the rest of the suite, I use pnpm. You can use any dependency manager you like, depending on what you have on your machine.
 
 run the development server:
 
@@ -41,4 +43,6 @@ Open a new terminal
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-![Screenshot](./assets/screenshot.png)
+![Screenshot](screenshot.png)
+
+if you have any questions, don't hesitate to leave me a message
