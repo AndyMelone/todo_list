@@ -1,24 +1,25 @@
-version: '3.8' 
 services:
   db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: todos
-      MYSQL_ROOT_PASSWORD: "root"
-    volumes:
-      - db:/var/lib/mysql
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    env_file:
+      - .env.production
     ports:
-      - "3306:3306"
+      - "${NEXT_PUBLIC_JSON_SERVER_PORT}:${NEXT_PUBLIC_JSON_SERVER_PORT}"
+    volumes:
+      - db:/data/db
+    command: >
+      sh -c "pnpm dlx json-server --watch db.json --port ${NEXT_PUBLIC_JSON_SERVER_PORT}"
 
   app:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env.production
     ports:
-      - "3000:3000"
-    environment:
-      NEXT_PUBLIC_API_URL: "http://json-server:3001" 
+      - "${NEXT_PUBLIC_APP_PORT}:${NEXT_PUBLIC_APP_PORT}"
     depends_on:
       - db
 

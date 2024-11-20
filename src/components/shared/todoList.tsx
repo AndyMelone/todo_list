@@ -6,7 +6,7 @@ import { TodoItem } from "./todoItem";
 import { TodoSkeleton } from "../skeletons/TodoSkeleton";
 import { EmptyTodo } from "../EmptyComponents/EmptyTodo";
 
-const MotionTodo = motion(TodoItem);
+const MotionTodo = motion.create(TodoItem);
 
 export const TodoList = () => {
   const { todos, loading, handleDelete, handleStatusChange } = useTodos();

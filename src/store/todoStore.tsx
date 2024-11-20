@@ -1,8 +1,6 @@
 import { create } from "zustand";
 import { TodoInterface } from "@/types/todo";
 
-const url = "http://localhost:3001/todos";
-
 interface TodoState {
   todos: TodoInterface[];
 
@@ -12,13 +10,20 @@ interface TodoState {
   updateTodoStatus: (id: string, completed: boolean) => Promise<boolean>;
 }
 
+const JSON_SERVER_URL = `${process.env.NEXT_PUBLIC_JSON_SERVER_HOST}:${process.env.NEXT_PUBLIC_JSON_SERVER_PORT}/todos`;
+
 const useTodoStore = create<TodoState>(
   (set: (fn: (state: TodoState) => TodoState) => void) => ({
     todos: [],
 
     loadTodos: async () => {
       try {
-        const response = await fetch(url);
+        if (!JSON_SERVER_URL) {
+          console.error("API URL is not defined");
+          return;
+        }
+
+        const response = await fetch(JSON_SERVER_URL);
         if (response.ok) {
           const todos = await response.json();
           set((state) => ({ ...state, todos }));
@@ -32,7 +37,12 @@ const useTodoStore = create<TodoState>(
 
     addTodo: async (todo: TodoInterface) => {
       try {
-        const response = await fetch(url, {
+        if (!JSON_SERVER_URL) {
+          console.error("API URL is not defined");
+          return false;
+        }
+
+        const response = await fetch(JSON_SERVER_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -58,7 +68,11 @@ const useTodoStore = create<TodoState>(
 
     deleteTodo: async (id: string) => {
       try {
-        const response = await fetch(`${url}/${id}`, {
+        if (!JSON_SERVER_URL) {
+          console.error("API URL is not defined");
+          return false;
+        }
+        const response = await fetch(`${JSON_SERVER_URL}/${id}`, {
           method: "DELETE",
         });
         if (response.ok) {
@@ -79,7 +93,11 @@ const useTodoStore = create<TodoState>(
 
     updateTodoStatus: async (id: string, completed: boolean) => {
       try {
-        const response = await fetch(`${url}/${id}`, {
+        if (!JSON_SERVER_URL) {
+          console.error("API URL is not defined");
+          return false;
+        }
+        const response = await fetch(`${JSON_SERVER_URL}/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

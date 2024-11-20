@@ -13,9 +13,16 @@ navigated to Todo_list directory
 > [!NOTE]
 > if you want to use Docker compose start the docker daemon and execute
 
-    docker compose up -d
+    Before running ``` docker compose up ```, make sure your variables are exported
 
 > [!NOTE]
+> if you have the ports in the environment variables, please export them here
+
+    export NEXT_PUBLIC_JSON_SERVER_PORT=3001
+    export NEXT_PUBLIC_APP_PORT=3000
+    docker compose up -d
+
+> [!NOTE]s
 > if you don't want to use docker make sure you have [Node JS](https://nodejs.org/en) on your machines
 
 Instal pnpm or using npm

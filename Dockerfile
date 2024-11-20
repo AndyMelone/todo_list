@@ -7,4 +7,4 @@ RUN npm install -g pnpm
 RUN pnpm install
 COPY . .
 EXPOSE 3000
-CMD pnpm dlx prisma db push && pnpm run dev
+CMD  pnpm run build && pnpm run start
