@@ -2,13 +2,15 @@ This is a Todo App build in [Next.js](https://nextjs.org) using Json server.
 
 ## Getting Started
 
-Clone the Todo List repository
+### Clone the Todo List repository
 
     git clone https://github.com/AndyMelone/todo_list.git
 
-navigated to Todo_list directory
+### navigated to Todo_list directory
 
     cd todo_list
+
+### Use Docker compose
 
 > [!NOTE]
 > if you want to use Docker compose start the docker daemon and execute
@@ -16,11 +18,13 @@ navigated to Todo_list directory
 Before running `docker compose up`, make sure your variables are exported
 
 > [!NOTE]
-> if you have the ports in the environment variables, please export them here
+> if you have edit the ports in the environment variables, please export them here
 
     export NEXT_PUBLIC_JSON_SERVER_PORT=3001
     export NEXT_PUBLIC_APP_PORT=3000
     docker compose up -d
+
+### Build local
 
 > [!NOTE]
 > if you don't want to use docker make sure you have [Node JS](https://nodejs.org/en) on your machines
@@ -29,7 +33,7 @@ Instal pnpm or using npm
 
     npm i -g pnpm
 
-installs the depedences
+install the depedences
 
     npm install
 
