@@ -13,7 +13,7 @@ navigated to Todo_list directory
 > [!NOTE]
 > if you want to use Docker compose start the docker daemon and execute
 
-    Before running `` docker compose up ``, make sure your variables are exported
+Before running `docker compose up`, make sure your variables are exported
 
 > [!NOTE]
 > if you have the ports in the environment variables, please export them here
