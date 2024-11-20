@@ -63,11 +63,11 @@ jobs:
         run: pnpm install
       - name: Build with Next.js
         run: pnpm run build
-      - name: Start dev server and json-server
+      - name: Start app server and json-server
         run: |
-          nohup pnpm run start &  # Démarre le serveur Next.js en arrière-plan
-          nohup pnpm run json-server &  # Démarre json-server en arrière-plan
-          sleep 10  # Attend un peu pour s'assurer que les serveurs sont lancés
+          nohup pnpm run start & 
+          nohup pnpm run json-server & 
+          sleep 10 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
