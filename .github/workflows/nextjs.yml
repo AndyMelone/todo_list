@@ -76,9 +76,10 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker buildx create --use
-          docker buildx inspect --bootstrap
-          docker buildx build --platform linux/arm64 -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_TODO_IMAGE:latest --push .
+          aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 717279731315.dkr.ecr.eu-west-3.amazonaws.com
+          docker build -t melone/todo .
+          docker tag melone/todo:latest 717279731315.dkr.ecr.eu-west-3.amazonaws.com/melone/todo:latest
+          docker push 717279731315.dkr.ecr.eu-west-3.amazonaws.com/melone/todo:latest
 
       - name: Deploy to ECS
         uses: imehedi/actions-awscli-v2@latest
