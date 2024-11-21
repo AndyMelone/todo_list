@@ -74,10 +74,17 @@ jobs:
         run: |
           aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
-      - name: Build and push Docker image
+      - name: Build and push json-server Docker image
         run: |
           aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 717279731315.dkr.ecr.eu-west-3.amazonaws.com
-          docker compose build 
+          docker build -t melone/json-server server
+          docker tag melone/json-server:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/melone/json-server:latest
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/melone/json-server:latest
+
+      - name: Build and push Next.js Docker image
+        run: |
+          aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 717279731315.dkr.ecr.eu-west-3.amazonaws.com
+          docker build -t melone/todo .
           docker tag melone/todo:latest 717279731315.dkr.ecr.eu-west-3.amazonaws.com/melone/todo:latest
           docker push 717279731315.dkr.ecr.eu-west-3.amazonaws.com/melone/todo:latest
 
