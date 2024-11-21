@@ -77,14 +77,14 @@ jobs:
       - name: Build and push json-server Docker image
         run: |
           aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 717279731315.dkr.ecr.eu-west-3.amazonaws.com
-          docker build -t todo/json-server .
+          docker build -t --no-cache todo/json-server . 
           docker tag todo/json-server:latest 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/json-server:latest
           docker push 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/json-server:latest
 
       - name: Build and push Next.js Docker image
         run: |
           aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 717279731315.dkr.ecr.eu-west-3.amazonaws.com
-          docker build -t todo/json-server .
+          docker build -t --no-cache todo/json-server .
           docker tag todo/json-server:latest 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/json-server:latest
           docker push 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/json-server:latest
 
