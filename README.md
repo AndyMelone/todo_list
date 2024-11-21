@@ -10,6 +10,20 @@ This is a Todo App build in [Next.js](https://nextjs.org) using Json server.
 
     cd todo_list
 
+> [!NOTE]
+> Create .env file in project root and copy env.example to copy in .env
+
+    NEXT_PUBLIC_JSON_SERVER_PORT=3001
+    NEXT_PUBLIC_APP_PORT=3000
+
+    NEXT_PUBLIC_JSON_SERVER_HOST=http://localhost
+
+    DATABASE_URL=mysql://root:root@db:3306/todos
+
+    MYSQL_DATABASE=todos
+    MYSQL_ROOT_PASSWORD=root
+    MYSQL_PORT=3306
+
 ### Use Docker compose
 
 > [!NOTE]
@@ -20,8 +34,6 @@ Before running `docker compose up`, make sure your variables are exported
 > [!NOTE]
 > if you have edit the ports in the environment variables, please export them here
 
-    export NEXT_PUBLIC_JSON_SERVER_PORT=3001
-    export NEXT_PUBLIC_APP_PORT=3000
     docker compose up -d
 
 ### Build local
