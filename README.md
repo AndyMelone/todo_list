@@ -29,11 +29,6 @@ This is a Todo App build in [Next.js](https://nextjs.org) using Json server.
 > [!NOTE]
 > if you want to use Docker compose start the docker daemon and execute
 
-Before running `docker compose up`, make sure your variables are exported
-
-> [!NOTE]
-> if you have edit the ports in the environment variables, please export them here
-
     docker compose up -d
 
 ### Build local
