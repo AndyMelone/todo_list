@@ -72,19 +72,22 @@ jobs:
 
       - name: Login to Amazon ECR
         run: |
-          aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-
-      - name: Build and push Docker image
-        run: |
           aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 717279731315.dkr.ecr.eu-west-3.amazonaws.com
-          docker build 
-          docker tag melone/todo:latest 717279731315.dkr.ecr.eu-west-3.amazonaws.com/melone/todo:latest
-          docker push 717279731315.dkr.ecr.eu-west-3.amazonaws.com/melone/todo:latest
+
+      - name: Build and push json-server Docker image
+        run: |
+          docker build -t 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/json-server:latest . 
+          docker push 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/json-server:latest
+
+      - name: Build and push Next.js Docker image
+        run: |
+          docker build -t 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/client:latest .
+          docker push 717279731315.dkr.ecr.eu-west-3.amazonaws.com/todo/client:latest
 
       - name: Deploy to ECS
         uses: imehedi/actions-awscli-v2@latest
         with:
-          args: ecs update-service --cluster $ECS_CLUSTER --service $ECS_TODO_SERVICE --force-new-deployment
+          args: s3 ls
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
