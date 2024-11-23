@@ -10,7 +10,7 @@ This is a Todo App build in [Next.js](https://nextjs.org) using Json server.
 
     cd todo_list
 
-> [!INPORTANT]
+> [!Important]
 > Create .env file in project root and copy env.example to copy in .env
 
     NEXT_PUBLIC_JSON_SERVER_PORT=3001
