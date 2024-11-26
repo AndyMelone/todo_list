@@ -67,6 +67,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Free disk space
+        run: |
+          sudo apt-get clean
+          sudo apt-get autoclean
+          sudo rm -rf /var/lib/apt/lists/*
+          docker system prune -af
+          docker volume prune -f
+
       - name: Login to Docker Hub
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
