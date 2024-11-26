@@ -7,4 +7,4 @@ RUN npm install -g pnpm
 RUN pnpm install
 COPY . .
 EXPOSE 3000
-CMD  pnpm run build && pnpm run start
+CMD ["sh", "-c", "pnpm run build && pnpm run start"]
