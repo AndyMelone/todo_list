@@ -1,4 +1,4 @@
-name: BUILD TODO APP
+name: BUILD AND DEPLOY TODO APP
 
 on:
   schedule:
@@ -59,3 +59,21 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
+
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - name: Delete old Docker image
+        run: docker rmi -f $DOCKER_USERNAME/todo-app:latest
+
+      - name: Run the Docker container
+        run: docker run -d -p 3000:3000 --name todo_container $DOCKER_USERNAME/todo-app:latest
