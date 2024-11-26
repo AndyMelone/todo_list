@@ -94,7 +94,6 @@ jobs:
         run: docker pull $DOCKER_USERNAME/todo-app:latest
 
       - name: Pull todo-app-json-server image
-
         run: docker pull $DOCKER_USERNAME/todo_json_server:latest
 
       - name: Delete old todo-app image
@@ -105,7 +104,7 @@ jobs:
         run: docker rmi -f $DOCKER_USERNAME/todo_json_server:latest
 
       - name: Run the todo-app container
-        run: docker run -d -p 3000:3000 --name todocontainer $DOCKER_USERNAME/todo-app:latest
+        run: docker run -d -p 3000:3000 --name todo_app $DOCKER_USERNAME/todo-app:latest
 
       - name: Run the todo_json_server container
-        run: docker run -d -p 3001:3001 --name todo_json_server $DOCKER_USERNAME/todo_json_server:latest
+        run: docker run -d -p 3001:3001 --name todo_server $DOCKER_USERNAME/todo_json_server:latest
