@@ -67,6 +67,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: delete old todo-app container
+        run: docker rm -f todocontainer
+
+      - name: delete old todo_json_server container
+        run: docker rm -f todo_json_server
+
+      - name: delete old todo-app image
+        run: docker rmi -f $DOCKER_USERNAME/todo-app:latest
+
+      - name: delete old todo_json_server image
+        run: docker rmi -f $DOCKER_USERNAME/todo_json_server:latest
+
       - name: Free disk space
         run: |
           sudo apt-get clean
