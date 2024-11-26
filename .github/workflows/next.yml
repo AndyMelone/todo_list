@@ -85,9 +85,6 @@ jobs:
 
         run: docker pull $DOCKER_USERNAME/todo_json_server:latest
 
-      - name: List Docker images
-        run: docker images
-
       - name: Delete old todo-app image
         run: docker rmi -f $DOCKER_USERNAME/todo-app:latest
 
