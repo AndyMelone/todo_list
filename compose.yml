@@ -8,7 +8,7 @@ services:
     volumes:
       - db:/data/db
     command: >
-      sh -c "pnpm dlx json-server --watch db.json --port ${NEXT_PUBLIC_JSON_SERVER_PORT}"
+      sh -c "pnpm dlx json-server --watch server/db.json --port ${NEXT_PUBLIC_JSON_SERVER_PORT}"
 
   app:
     build:
