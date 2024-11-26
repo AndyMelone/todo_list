@@ -76,4 +76,4 @@ jobs:
         run: docker rmi -f $DOCKER_USERNAME/todo-app:latest
 
       - name: Run the Docker container
-        run: docker run -d -p 3000:3000 --name todo_container $DOCKER_USERNAME/todo-app:latest
+        run: docker run -d -p 3000:3000 --name todocontainer $DOCKER_USERNAME/todo-app:latest
