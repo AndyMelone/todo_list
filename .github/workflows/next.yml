@@ -72,6 +72,15 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
+      - name: Pull todo-app  image
+        run: docker pull $DOCKER_USERNAME/todo-app:latest
+
+      - name: todo-app-json-server
+        run: docker pull $DOCKER_USERNAME/todo_json_server:latest
+
+      - name: List Docker images
+        run: docker images
+
       - name: Delete old Docker image
         run: docker rmi -f $DOCKER_USERNAME/todo-app:latest
 
