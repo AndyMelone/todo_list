@@ -53,13 +53,13 @@ jobs:
 
       - name: Build and push Docker image todo-app
         run: |
-          docker build -t $DOCKER_USERNAME/todo-app:latest .
-          docker push $DOCKER_USERNAME/todo-app:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/todo-app:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/todo-app:latest
 
       - name: Buils and push Docker image todo-app-json-server
         run: |
-          docker build -t $DOCKER_USERNAME/todo_json_server:latest -f server/Dockerfile .
-          docker push $DOCKER_USERNAME/todo_json_server:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/todo_json_server:latest -f server/Dockerfile .
+          docker push ${{ secrets.DOCKER_USERNAME }}/todo_json_server:latest
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
