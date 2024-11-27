@@ -84,6 +84,9 @@ jobs:
           sudo apt-get clean
           sudo apt-get autoclean
           sudo rm -rf /var/lib/apt/lists/*
+          docker stop $(docker ps -q)
+          docker rm  $(docker ps -qa)
+          docker rmi $(docker image ls -q)
           docker system prune -af
           docker volume prune -f
 
