@@ -8,6 +8,6 @@ stop:
 	docker-compose stop
 up:
 	docker-compose up -d
-do:
+down:
 	docker-compose down
 

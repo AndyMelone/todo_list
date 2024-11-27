@@ -39,7 +39,7 @@ export const TodoList = () => {
             animate={{ opacity: 1 }}
             title={todo.title}
             completed={todo.completed}
-            onDeleted={() => handleDelete(todo.id)}
+            onDeleted={() => handleDelete(todo)}
             onStatusChanged={() => handleStatusChange(todo.id)}
           />
         </Reorder.Item>
