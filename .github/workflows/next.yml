@@ -84,15 +84,8 @@ jobs:
 
       - name: Free disk space
         run: |
-          sudo apt-get clean
-          sudo apt-get autoclean
-          sudo rm -rf /var/lib/apt/lists/*
-          docker rm -f $(docker ps -a -q)
-          docker rmi -f $(docker images -q)
-          docker volume rm $(docker volume ls -q)
-          docker system prune -af --volumes
-          docker system prune -af
-          docker volume prune -f
+          chmod +x ./scripts/cleanup.sh
+          ./scripts/cleanup.sh
 
       - name: Consult space
         run: df -h
