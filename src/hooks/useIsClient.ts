@@ -4,7 +4,7 @@ export const useIsClient = () => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Met à jour après montage
+    setIsClient(true);
   }, []);
 
   return isClient;

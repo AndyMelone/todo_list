@@ -4,14 +4,13 @@ import { useIsClient } from "./useIsClient";
 const useWindowSize = () => {
   const isClient = useIsClient();
 
-  // Valeurs par défaut initiales pour éviter les erreurs côté serveur
   const [windowSize, setWindowSize] = useState({
-    width: 0, // Valeurs par défaut sûres
+    width: 0,
     height: 0,
   });
 
   useEffect(() => {
-    if (!isClient) return; // Ne s'exécute pas côté serveur
+    if (!isClient) return;
 
     const handleResize = () => {
       setWindowSize({
@@ -20,15 +19,12 @@ const useWindowSize = () => {
       });
     };
 
-    // Définir la taille initiale au montage
     handleResize();
 
-    // Ajouter l'écouteur d'événements
     window.addEventListener("resize", handleResize);
 
-    // Nettoyage de l'écouteur lors du démontage
     return () => window.removeEventListener("resize", handleResize);
-  }, [isClient]); // Dépendance à `isClient`
+  }, [isClient]);
 
   return windowSize;
 };
