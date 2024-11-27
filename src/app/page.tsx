@@ -6,6 +6,7 @@ import TodoDialog from "@/components/shared/todoDialogue";
 import { motion } from "framer-motion";
 import useTodoStore from "@/store/todoStore";
 import { TodoList } from "@/components/shared/todoList";
+import { lang } from "@/store/fr";
 
 export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function Home() {
     >
       <div className="flex justify-between px-8 pt-3 pb-5 items-center">
         <h1 className="sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
-          Todos ({todos.length})
+          {lang.todos.todo} ({todos.length})
         </h1>
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
           <button

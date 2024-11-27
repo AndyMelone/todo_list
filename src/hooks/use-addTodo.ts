@@ -3,6 +3,7 @@ import { toast as sonner } from "sonner";
 import useWindowSize from "./useWindowSize";
 import { formatDate } from "@/utils/formatdate";
 import toast from "react-hot-toast";
+import { lang } from "@/store/fr";
 
 export const useAddTodo = () => {
   const { loadTodos, addTodo, deleteTodo } = useTodoStore();
@@ -19,26 +20,26 @@ export const useAddTodo = () => {
         id: id,
       });
       if (width > 635) {
-        sonner("Todo ajoutée 🎉", {
+        sonner(lang.todos.addTodo.succes, {
           description: formatDate(new Date()),
           action: {
-            label: "Annuler",
+            label: lang.todos.cancel,
             onClick: async () => {
               await deleteTodo(id);
             },
           },
         });
       } else {
-        toast.success("Todo ajoutée 🎉");
+        toast.success(lang.todos.addTodo.succes);
       }
 
       loadTodos();
     } catch (error) {
-      console.error("Erreur lors de l'ajout de la todo", error);
-      sonner("  Erreur ❌", {
-        description: "Une erreur est survenue lors de l'ajout de la todo.",
+      console.error(lang.todos.addTodo.errormsg, error);
+      sonner(lang.todos.error, {
+        description: lang.todos.addTodo.errormsg,
         action: {
-          label: "Réesayer",
+          label: lang.todos.try,
           onClick: async () => {
             await addTodo({
               title: todoName,

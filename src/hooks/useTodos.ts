@@ -5,6 +5,7 @@ import useWindowSize from "./useWindowSize";
 import { formatDate } from "@/utils/formatdate";
 import toast from "react-hot-toast";
 import { TodoInterface } from "@/types/todo";
+import { lang } from "@/store/fr";
 
 export const useTodos = () => {
   const { todos, addTodo, loadTodos, deleteTodo, updateTodoStatus } =
@@ -26,12 +27,12 @@ export const useTodos = () => {
     const success = await deleteTodo(todo.id);
 
     if (width > 635) {
-      sonner(success ? "Todo supprimée 🎉" : " Oops une erreur a survenue ‼️", {
+      sonner(success ? lang.todos.deleteTodo.succes : lang.todos.oopsmsg, {
         description: success
           ? formatDate(new Date())
-          : "Impossible de supprimer la todo",
+          : lang.todos.deleteTodo.errormsg,
         action: {
-          label: "Annuler",
+          label: lang.todos.cancel,
           onClick: async () =>
             addTodo({
               title: todo.title,
@@ -43,7 +44,7 @@ export const useTodos = () => {
       });
     } else {
       toast.success(
-        success ? "Todo supprimée 🎉" : " Oops une erreur a survenue ‼️"
+        success ? lang.todos.deleteTodo.succes : lang.todos.oopsmsg
       );
     }
   };
@@ -54,14 +55,17 @@ export const useTodos = () => {
 
     const success = await updateTodoStatus(id, !todo.completed);
     if (width > 635) {
-      sonner(success ? "Statut modifié 🎉" : " Oops une erreur a survenue ‼️", {
-        description: success
-          ? formatDate(new Date())
-          : "Impossible de modifier le statut",
-      });
+      sonner(
+        success ? lang.todos.updateTodoStatus.succes : lang.todos.oopsmsg,
+        {
+          description: success
+            ? formatDate(new Date())
+            : lang.todos.updateTodoStatus.error,
+        }
+      );
     } else {
       toast.success(
-        success ? "Statut modifié 🎉" : " Oops une erreur a survenue ‼️"
+        success ? lang.todos.updateTodoStatus.succes : lang.todos.oopsmsg
       );
     }
   };

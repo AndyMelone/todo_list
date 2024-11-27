@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import TodoForm from "./TodoForm";
+import { lang } from "@/store/fr";
 
 interface TodoDialogProps {
   isOpen: boolean;
@@ -17,9 +18,9 @@ export default function TodoDialog({ isOpen, onClose }: TodoDialogProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="rounded-xl w-full md:w-1/2 lg:w-1/2 sm:mx-0">
         <DialogHeader>
-          <DialogTitle>Ajouter une Todo</DialogTitle>
+          <DialogTitle>{lang.todos.addTodo.title}</DialogTitle>
           <DialogDescription>
-            Ajouter une nouvelle todo à votre liste
+            {lang.todos.addTodo.description}
           </DialogDescription>
         </DialogHeader>
         <TodoForm onClose={onClose} />

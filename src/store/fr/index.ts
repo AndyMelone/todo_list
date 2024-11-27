@@ -6,10 +6,25 @@ export const lang = {
   todos: {
     todo: "Todos",
     add: "Ajouter",
+    cancel: "Annuler",
+    error: "Erreur ❌",
+    try: "Réesayer",
+    oopsmsg: " Oops une erreur a survenue ‼️",
+    emptyTodo: "Aucune todo à afficher",
     addTodo: {
       title: "Ajouter une Todo",
       description: "Ajouter une nouvelle todo à votre liste",
       inputLabel: "Intitulé de la todo",
+      succes: "Todo ajoutée 🎉",
+      errormsg: "Une erreur est survenue lors de l'ajout de la todo.",
+    },
+    deleteTodo: {
+      succes: "Todo supprimée 🎉",
+      errormsg: "Impossible de supprimer la todo",
+    },
+    updateTodoStatus: {
+      succes: "Statut modifié 🎉",
+      error: "Impossible de modifier le statut",
     },
   },
 };

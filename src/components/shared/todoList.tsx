@@ -5,6 +5,7 @@ import { useTodos } from "@/hooks/useTodos";
 import { TodoItem } from "./todoItem";
 import { TodoSkeleton } from "../skeletons/TodoSkeleton";
 import { EmptyTodo } from "../EmptyComponents/EmptyTodo";
+import { lang } from "@/store/fr";
 
 const MotionTodo = motion.create(TodoItem);
 
@@ -16,7 +17,7 @@ export const TodoList = () => {
   }
 
   if (todos.length === 0) {
-    return <EmptyTodo message="Aucune todo à afficher" />;
+    return <EmptyTodo message={lang.todos.emptyTodo} />;
   }
 
   return (
