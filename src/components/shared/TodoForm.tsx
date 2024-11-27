@@ -41,7 +41,9 @@ export default function TodoForm({ onClose }: TodoFormProps) {
       </div>
       <DialogFooter>
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-          <Button type="submit">{lang.todos.add}</Button>
+          <Button aria-labelledby="soumetre" type="submit" id="submit">
+            {lang.todos.add}
+          </Button>
         </motion.div>
       </DialogFooter>
     </form>
