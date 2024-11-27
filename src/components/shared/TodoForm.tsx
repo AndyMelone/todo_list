@@ -5,6 +5,7 @@ import { useState } from "react";
 import { DialogFooter } from "../ui/dialog";
 import { motion } from "framer-motion";
 import { useAddTodo } from "@/hooks/use-addTodo";
+import { lang } from "@/store/fr";
 
 interface TodoFormProps {
   onClose: () => void;
@@ -28,7 +29,7 @@ export default function TodoForm({ onClose }: TodoFormProps) {
       <div className="grid gap-4 py-4">
         <div className="flex flex-col gap-4">
           <Label htmlFor="name" className="text-start">
-            Intitulé de la todo
+            {lang.todos.addTodo.inputLabel}
           </Label>
           <Input
             id="name"
@@ -40,7 +41,7 @@ export default function TodoForm({ onClose }: TodoFormProps) {
       </div>
       <DialogFooter>
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-          <Button type="submit">Ajouter</Button>
+          <Button type="submit">{lang.todos.add}</Button>
         </motion.div>
       </DialogFooter>
     </form>
