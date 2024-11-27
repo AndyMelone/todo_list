@@ -30,6 +30,8 @@ export default function Home() {
         </h1>
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
           <button
+            id="addTodo"
+            aria-label="add todo"
             className="hover:opacity-80"
             onClick={() => setIsDialogOpen(true)}
           >
