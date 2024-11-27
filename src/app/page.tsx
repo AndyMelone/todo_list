@@ -25,7 +25,7 @@ export default function Home() {
       className="rounded-xl w-full md:w-1/2 mx-4 md:mx-0"
     >
       <div className="flex justify-between px-8 pt-3 pb-5 items-center">
-        <h1 className="sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+        <h1 className="sm:text-lg md:text-xl lg:text-2xl font-bold text-white">
           {lang.todos.todo} ({todos.length})
         </h1>
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>

@@ -19,6 +19,33 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: lang.metadata.description,
   description: lang.metadata.description,
+  icons: {
+    icon: ["/favicon.ico?v=4"],
+    apple: ["/apple-touch-icon.png?v=4"],
+    shortcut: ["/apple-touch-icon.png"],
+  },
+  keywords: ["Todo", "Todo app", "Todo next js", "Todo github"],
+
+  twitter: {
+    card: "summary",
+    title: "TODOAPP",
+    description: "Test TODO APP with Json-server",
+    creator: "@TODOAPP",
+    site: "@TODOAPP",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
