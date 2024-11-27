@@ -90,6 +90,9 @@ jobs:
           docker system prune -af
           docker volume prune -f
 
+      - name: Consult space
+        run: df -h
+
       - name: Login to Docker Hub
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
