@@ -79,14 +79,14 @@ jobs:
       - name: delete old todo_json_server image
         run: docker rmi -f $DOCKER_USERNAME/todo_json_server:latest
 
+      - name: Consult space
+        run: df -h
+
       - name: Free disk space
         run: |
           sudo apt-get clean
           sudo apt-get autoclean
           sudo rm -rf /var/lib/apt/lists/*
-          docker stop $(docker ps -q)
-          docker rm  $(docker ps -qa)
-          docker rmi $(docker image ls -q)
           docker system prune -af
           docker volume prune -f
 
