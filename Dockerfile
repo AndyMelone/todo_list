@@ -8,4 +8,5 @@ RUN pnpm install
 COPY . .
 EXPOSE 3000
 RUN pnpm run build
-CMD ["npx", "serve", "-s", "out"]
+# CMD ["npx", "serve", "-s", "out"]
+CMD [ "pnpm", "start" ]
