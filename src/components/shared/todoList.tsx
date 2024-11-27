@@ -9,7 +9,7 @@ import { lang } from "@/store/fr";
 
 const MotionTodo = motion.create(TodoItem);
 
-export const TodoList = () => {
+const TodoList = () => {
   const { todos, loading, handleDelete, handleStatusChange } = useTodos();
 
   if (loading) {
@@ -48,3 +48,5 @@ export const TodoList = () => {
     </Reorder.Group>
   );
 };
+
+export default TodoList;

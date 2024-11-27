@@ -1,17 +1,22 @@
 "use client";
 import { IoMdAddCircle } from "react-icons/io";
 import { useState } from "react";
-import TodoDialog from "@/components/shared/todoDialogue";
-
 import { motion } from "framer-motion";
 import useTodoStore from "@/store/todoStore";
-import { TodoList } from "@/components/shared/todoList";
 import { lang } from "@/store/fr";
+import dynamic from "next/dynamic";
+
+const TodoDialog = dynamic(() => import("@/components/shared/todoDialogue"), {
+  ssr: false,
+});
+
+const TodoList = dynamic(() => import("@/components/shared/todoList"), {
+  ssr: false,
+});
 
 export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { todos } = useTodoStore();
-
   return (
     <div
       style={{
