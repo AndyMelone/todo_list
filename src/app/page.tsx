@@ -7,11 +7,11 @@ import { lang } from "@/store/fr";
 import dynamic from "next/dynamic";
 
 const TodoDialog = dynamic(() => import("@/components/shared/todoDialogue"), {
-  ssr: false,
+  loading: () => <p>Loading...</p>,
 });
 
 const TodoList = dynamic(() => import("@/components/shared/todoList"), {
-  ssr: false,
+  loading: () => <p>Loading...</p>,
 });
 
 export default function Home() {
