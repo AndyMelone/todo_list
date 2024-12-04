@@ -1,0 +1,42 @@
+# Node modules locaux (on les reconstruit dans l'image)
+node_modules
+.pnp
+.pnp.js
+
+# Dossiers de build locaux
+.next
+out
+dist
+
+
+
+# Logs et fichiers de débogage
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+*.log
+
+# Caches
+.cache
+*.lock
+
+# Fichiers spécifiques à l'éditeur ou système
+.vscode
+.idea
+.DS_Store
+*.sw?
+*.iml
+scripts
+Makefile
+README.md
+*.png
+
+# Tests et dossiers non pertinents pour l'image
+__tests__
+__mocks__
+coverage
+
+# Divers
+*.md          # Exclure les fichiers Markdown si non nécessaires
+*.log         # Exclure les logs de développement
