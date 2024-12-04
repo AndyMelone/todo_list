@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: server/Dockerfile
+    image: todo-db
     ports:
       - "${NEXT_PUBLIC_JSON_SERVER_PORT}:${NEXT_PUBLIC_JSON_SERVER_PORT}"
     volumes:
@@ -14,6 +15,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: todo
     develop:
       watch:
         - action: rebuild
