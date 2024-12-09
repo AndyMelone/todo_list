@@ -1,6 +1,6 @@
 "use client";
 import { IoMdAddCircle } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import useTodoStore from "@/store/todoStore";
 import { lang } from "@/store/fr";
@@ -15,6 +15,16 @@ const TodoList = dynamic(() => import("@/components/shared/todoList"), {
 });
 
 export default function Home() {
+  const [hostname, setHostname] = useState<string>("");
+
+  useEffect(() => {
+    // Vérifier si nous sommes côté client
+    if (typeof window !== "undefined") {
+      setHostname(window.location.hostname);
+    }
+  }, []);
+
+  console.log("Hôte de la machine : " + hostname);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { todos } = useTodoStore();
   return (
