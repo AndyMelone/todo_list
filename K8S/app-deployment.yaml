@@ -19,11 +19,11 @@ spec:
             - containerPort: 3000
           env:
             - name: NEXT_PUBLIC_JSON_SERVER_HOST
-              value: "http://json-server-service" # Utilisation du nom du service JSON Server
+              value: "http://json-server-service"
             - name: NEXT_PUBLIC_JSON_SERVER_PORT
-              value: "3001" # Port du JSON Server
-            - name: NODE_ENV
-              value: "production"
+              value: "3001"
+            - name: NEXT_PUBLIC_APP_PORT
+              value: "3000"
 
 ---
 apiVersion: v1
@@ -31,10 +31,10 @@ kind: Service
 metadata:
   name: todo-app-service
 spec:
-  type: NodePort # Expose le service sur un port spécifique
+  type: NodePort
   ports:
-    - port: 3000 # Le port interne de l'application Next.js
-      targetPort: 3000 # Le même port utilisé dans le container
+    - port: 3000
+      targetPort: 3000
       protocol: TCP
   selector:
-    app: todo-app # Sélectionner les pods avec le label "app: todo-app"
+    app: todo-app
