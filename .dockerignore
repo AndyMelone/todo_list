@@ -2,12 +2,12 @@
 node_modules
 .pnp
 .pnp.js
+.env*
 
 # Dossiers de build locaux
 .next
 out
 dist
-
 
 
 # Logs et fichiers de débogage

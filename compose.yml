@@ -15,21 +15,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    develop:
-      watch:
-        - action: rebuild
-          path: ./src
+    image: todo-app
+    ports:
+      - "${NEXT_PUBLIC_APP_PORT}:${NEXT_PUBLIC_APP_PORT}"
     depends_on:
       - db
-
-  nginx:
-    image: nginx
-    volumes:
-      - ./conf.d:/etc/nginx/conf.d
-    ports:
-      - "${NEXT_PUBLIC_NGINX_PORT}:${NEXT_PUBLIC_NGINX_PORT}"
-    depends_on:
-      - app
 
 volumes:
   db:

@@ -1,25 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextjs-deployment
+  name: todo-app-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: nextjs
+      app: todo-app
   template:
     metadata:
       labels:
-        app: nextjs
+        app: todo-app
     spec:
       containers:
-        - name: nextjs
-          image: melone30/todo-app:v1
+        - name: todo-app
+          image: melone30/todo-app
           ports:
             - containerPort: 3000
           env:
+            - name: NEXT_PUBLIC_JSON_SERVER_HOST
+              value: "http://json-server-service" # Utilisation du nom du service JSON Server
             - name: NEXT_PUBLIC_JSON_SERVER_PORT
-              value: "3001"
+              value: "3001" # Port du JSON Server
             - name: NODE_ENV
               value: "production"
 
@@ -27,11 +29,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nextjs-service
+  name: todo-app-service
 spec:
-  type: ClusterIP
+  type: NodePort # Expose le service sur un port spécifique
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 3000 # Le port interne de l'application Next.js
+      targetPort: 3000 # Le même port utilisé dans le container
+      protocol: TCP
   selector:
-    app: nextjs
+    app: todo-app # Sélectionner les pods avec le label "app: todo-app"
