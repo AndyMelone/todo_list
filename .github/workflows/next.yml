@@ -1,8 +1,8 @@
 name: BUILD AND DEPLOY TODO APP
 
 on:
-  schedule:
-    - cron: "09 10 * * *"
+  # schedule:
+    # - cron: "09 10 * * *"
   push:
     branches: ["main"]
   pull_request:
